@@ -1,25 +1,47 @@
-// Wait for the HTML document to fully load before running the script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Select all navigation links that point to an ID (start with '#')
+    // --- 1. Smooth Scrolling Logic ---
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            // Prevent the default HTML jump behavior
             e.preventDefault();
-
-            // Get the target section ID (e.g., "#work")
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-
-            // If the section exists, scroll to it smoothly
             if (targetSection) {
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
-                    block: 'start' // Aligns the top of the section to the top of the screen
+                    block: 'start'
                 });
             }
         });
     });
+
+    // --- 2. Scroll Reveal Logic ---
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        // 0.1 means trigger when 10% of the element is visible
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Check if the element has entered the viewport
+            if (entry.isIntersecting) {
+                console.log('Revealing element:', entry.target); // Debugging check
+
+                // Add the class that triggers the CSS animation
+                entry.target.classList.add('active');
+
+                // Stop watching this element so it doesn't animate again if you scroll up
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Find everything with the .reveal class
+    const hiddenElements = document.querySelectorAll('.reveal');
+
+    // Tell the observer to watch them
+    hiddenElements.forEach((el) => observer.observe(el));
 });
