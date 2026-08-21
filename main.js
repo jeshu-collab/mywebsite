@@ -1,47 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Smooth Scrolling Logic ---
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    // 1. Setup the Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When the element scrolls into view...
+            if (entry.isIntersecting) {
+                // Add the active class to trigger the CSS fade in
+                entry.target.classList.add('active');
             }
         });
+    }, {
+        // Triggers when 30% of the element is visible
+        threshold: 0.3
     });
 
-    // --- 2. Scroll Reveal Logic ---
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        // 0.1 means trigger when 10% of the element is visible
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            // Check if the element has entered the viewport
-            if (entry.isIntersecting) {
-                console.log('Revealing element:', entry.target); // Debugging check
-
-                // Add the class that triggers the CSS animation
-                entry.target.classList.add('active');
-
-                // Stop watching this element so it doesn't animate again if you scroll up
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Find everything with the .reveal class
+    // 2. Grab all elements with the 'reveal' class
     const hiddenElements = document.querySelectorAll('.reveal');
 
-    // Tell the observer to watch them
+    // 3. Tell the observer to watch them
     hiddenElements.forEach((el) => observer.observe(el));
+
+    // 4. Force the first screen to reveal immediately on load
+    setTimeout(() => {
+        const firstScreenElements = document.querySelectorAll('.fullscreen:nth-child(1) .reveal');
+        firstScreenElements.forEach(el => el.classList.add('active'));
+    }, 100);
 });

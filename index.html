@@ -9,91 +9,42 @@
 </head>
 
 <body>
-    <!-- 3D Canvas Background -->
-    <canvas id="bg-canvas"></canvas>
 
     <main>
-        <!-- 1. The Full-Screen Hero (No nav yet) -->
-        <section id="hero">
-            <!-- This class handles the load animation -->
-            <div class="hero-content load-fade-in">
-                <h1>hey there! 👋</h1>
-                <!-- Kept your updated CSE text here! -->
-                <p>I'm Jaswanth, a CSE student building hardware and software projects.</p>
-            </div>
+        <!-- SCREEN 1: The Intro -->
+        <section class="fullscreen">
+            <h1 class="reveal">hey there! 👋</h1>
 
-            <!-- This fades in slightly after the main text -->
-            <div class="scroll-prompt load-fade-in-delayed">
+            <div class="scroll-prompt reveal delay-1">
                 <p>scroll</p>
                 <p>↓</p>
             </div>
         </section>
 
-        <!-- 2. The Navigation (Appears after you scroll past the hero) -->
-        <header id="main-nav">
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+        <!-- SCREEN 2: The Statement & Navigation -->
+        <section class="fullscreen">
+            <h2 class="reveal">i'm jaswanth</h2>
+
+            <p class="reveal delay-1 statement-text">
+                i build hardware and software<br>
+                projects @ <span class="highlight">vit-ap</span>
+            </p>
+
+            <nav class="reveal delay-2 inline-nav">
+                <a href="#about">about</a> |
+                <a href="#work">work</a> |
+                <a href="#contact">contact</a>
             </nav>
-        </header>
-
-        <!-- 3. Work Section -->
-        <section id="work" class="reveal">
-            <h2>Work</h2>
-            <div class="project-grid">
-
-                <article class="project-card reveal">
-                    <h3>Fishpad</h3>
-                    <p>A custom 9-key macropad featuring an OLED display and rotary encoder. Designed the KiCad PCB and
-                        STEP enclosure files from scratch, running on KMK firmware.</p>
-                </article>
-
-                <article class="project-card reveal">
-                    <h3>Spotify Glass Widget</h3>
-                    <p>An open-source desktop widget built for Windows 11 using Electron, providing a sleek, transparent
-                        interface for music playback.</p>
-                </article>
-
-                <article class="project-card reveal">
-                    <h3>AI Quiz Generator</h3>
-                    <p>A Node.js server integrating the Gemini API to parse academic PDF notes and automatically
-                        generate interactive study quizzes.</p>
-                </article>
-
-                <article class="project-card reveal">
-                    <h3>Gesture Particle Playground</h3>
-                    <p>An interactive web application combining a Three.js 3D particle system with real-time hand
-                        gesture tracking via MediaPipe.</p>
-                </article>
-
-                <article class="project-card reveal">
-                    <h3>Edge-Safety Command Center</h3>
-                    <p>Frontend UI dashboard built for a real-time safety alert system utilizing computer vision,
-                        developed for the Google Developer Solution Challenge.</p>
-                </article>
-
-                <article class="project-card reveal">
-                    <h3>Thrust Vector Control Rockets</h3>
-                    <p>3D CAD models and structural designs for model rocket prototypes featuring thrust vector control
-                        systems and custom flight computers.</p>
-                </article>
-
-            </div>
         </section>
 
-        <!-- 4. Contact Section -->
-        <section id="contact" class="reveal">
-            <h2>Contact</h2>
-            <p>Let's connect: [Email/Links]</p>
+        <!-- SCREEN 3: The Projects (Scrolls naturally below) -->
+        <section id="work" class="content-section reveal">
+            <!-- You can paste your <div class="project-grid"> back in here later -->
+            <h2 style="text-align: center; margin-top: 5rem;">[ Projects will go here ]</h2>
         </section>
+
     </main>
 
-    <!-- Scripts (Only loaded once) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="./three.js"></script>
     <script src="./main.js"></script>
 </body>
 
