@@ -10,41 +10,50 @@
 
 <body>
 
+    <!-- The 3D Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
     <main>
-        <!-- SCREEN 1: The Intro -->
-        <section class="fullscreen">
-            <h1 class="reveal">hey there! 👋</h1>
+        <!-- 1. The 400vh Scroll Track -->
+        <div id="scroll-track">
 
-            <div class="scroll-prompt reveal delay-1">
-                <p>scroll</p>
-                <p>↓</p>
+            <!-- 2. The Sticky Viewport (Locked to screen) -->
+            <div id="sticky-container" class="state-0">
+
+                <!-- Accessories (Corners and Bottom) -->
+                <a href="#" class="top-logo">jaswanth.dev</a>
+                <a href="#work" class="bottom-skip">skip to content</a>
+                <div class="bottom-scroll">scroll<br>↓</div>
+                <div class="bottom-footer">© 2026 jaswanth, open sourced ♥</div>
+
+                <!-- 3. The Center Content Block -->
+                <div class="center-content">
+                    <div class="line l1">hey there! 👋</div>
+                    <div class="line l2">i'm jaswanth</div>
+                    <div class="line l3">
+                        i build hardware and software<br>
+                        projects @ <span class="highlight">vit-ap</span>
+                    </div>
+                    <nav class="line l4 inline-nav">
+                        <a href="#about">about</a> |
+                        <a href="#work">work</a> |
+                        <a href="#contact">contact</a>
+                    </nav>
+                </div>
+
             </div>
-        </section>
+        </div>
 
-        <!-- SCREEN 2: The Statement & Navigation -->
-        <section class="fullscreen">
-            <h2 class="reveal">i'm jaswanth</h2>
-
-            <p class="reveal delay-1 statement-text">
-                i build hardware and software<br>
-                projects @ <span class="highlight">vit-ap</span>
-            </p>
-
-            <nav class="reveal delay-2 inline-nav">
-                <a href="#about">about</a> |
-                <a href="#work">work</a> |
-                <a href="#contact">contact</a>
-            </nav>
-        </section>
-
-        <!-- SCREEN 3: The Projects (Scrolls naturally below) -->
-        <section id="work" class="content-section reveal">
-            <!-- You can paste your <div class="project-grid"> back in here later -->
-            <h2 style="text-align: center; margin-top: 5rem;">[ Projects will go here ]</h2>
+        <!-- 4. Your Projects Section (Below the timeline) -->
+        <section id="work" style="padding-top: 10vh; height: 100vh; text-align: center;">
+            <p>[ Your project grid will slide in here after the intro ]</p>
         </section>
 
     </main>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./three.js"></script>
     <script src="./main.js"></script>
 </body>
 

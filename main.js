@@ -1,28 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Setup the Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // When the element scrolls into view...
-            if (entry.isIntersecting) {
-                // Add the active class to trigger the CSS fade in
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        // Triggers when 30% of the element is visible
-        threshold: 0.3
+    const stickyContainer = document.getElementById('sticky-container');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const vh = window.innerHeight;
+
+        // Change the class based on how many screen-heights (vh) the user has scrolled
+        if (scrollY < vh * 0.4) {
+            stickyContainer.className = 'state-0';
+        }
+        else if (scrollY >= vh * 0.4 && scrollY < vh * 1.0) {
+            stickyContainer.className = 'state-1';
+        }
+        else if (scrollY >= vh * 1.0 && scrollY < vh * 1.6) {
+            stickyContainer.className = 'state-2';
+        }
+        else {
+            stickyContainer.className = 'state-3';
+        }
     });
 
-    // 2. Grab all elements with the 'reveal' class
-    const hiddenElements = document.querySelectorAll('.reveal');
-
-    // 3. Tell the observer to watch them
-    hiddenElements.forEach((el) => observer.observe(el));
-
-    // 4. Force the first screen to reveal immediately on load
-    setTimeout(() => {
-        const firstScreenElements = document.querySelectorAll('.fullscreen:nth-child(1) .reveal');
-        firstScreenElements.forEach(el => el.classList.add('active'));
-    }, 100);
+    // Initialize state immediately on load
+    window.dispatchEvent(new Event('scroll'));
 });
