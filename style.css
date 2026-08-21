@@ -254,3 +254,66 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+
+/* Position the button at the bottom right */
+.bottom-skip {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-size: 1rem;
+    color: #554d44;
+    text-decoration: underline;
+
+    /* This makes the fade smooth when scrolling up and down */
+    transition: opacity 0.5s ease;
+}
+
+.bottom-skip:hover {
+    color: #000;
+}
+
+/* --- THE VISIBILITY LOGIC --- */
+
+/* Visible in States 0, 1, and 2 */
+.state-0 .bottom-skip,
+.state-1 .bottom-skip,
+.state-2 .bottom-skip {
+    opacity: 1;
+    pointer-events: auto;
+    /* Clickable */
+}
+
+/* Faded out in State 3 (The details/nav page) */
+.state-3 .bottom-skip {
+    opacity: 0;
+    pointer-events: none;
+    /* Prevents clicking while it's invisible */
+}
+
+/* =========================================
+   6. SUB-PAGE STYLES (work.html, etc.)
+   ========================================= */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background-color: transparent;
+    border: 1px solid #dcd3c6;
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    background-color: #f6efe6;
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}

@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const stickyContainer = document.getElementById('sticky-container');
+    const skipBtn = document.querySelector('.bottom-skip');
 
+    // 1. The Scroll State Machine
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
         const vh = window.innerHeight;
 
-        // Change the class based on how many screen-heights (vh) the user has scrolled
         if (scrollY < vh * 0.4) {
             stickyContainer.className = 'state-0';
         }
@@ -20,6 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
             stickyContainer.className = 'state-3';
         }
     });
+
+    // 2. The Skip Button Logic
+    if (skipBtn) {
+        skipBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop the link from jumping the page instantly
+
+            // Smoothly scroll down to 2x the screen height, landing perfectly in State 3
+            window.scrollTo({
+                top: window.innerHeight * 2,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // Initialize state immediately on load
     window.dispatchEvent(new Event('scroll'));

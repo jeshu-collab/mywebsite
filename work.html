@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Jaswanth</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- You can keep the subtle 3D particles on your sub-pages too! -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- A clean, static top navigation for your sub-pages -->
+    <header
+        style="padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto;">
+        <a href="index.html" style="text-decoration: none; font-weight: bold; color: #554d44;">jaswanth.dev</a>
+        <nav class="inline-nav">
+            <a href="about.html">about</a>
+            <a href="work.html" style="color: #000;">work</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
+
+    <main style="max-width: 800px; margin: 4rem auto; padding: 0 2rem;">
+        <h1 style="margin-bottom: 2rem; border-bottom: 2px solid #443c33; display: inline-block;">work.</h1>
+
+        <div class="project-grid">
+
+            <!-- Hardware Project -->
+            <article class="project-card reveal active">
+                <h3>Fishpad</h3>
+                <p>A custom 9-key macropad featuring an OLED display and rotary encoder. Designed the KiCad PCB and STEP
+                    enclosure files from scratch, running on KMK firmware.</p>
+            </article>
+
+            <!-- Software / AI -->
+            <article class="project-card reveal active">
+                <h3>AI Quiz Generator</h3>
+                <p>A Node.js server integrating the Gemini API to parse academic PDF notes and automatically generate
+                    interactive study quizzes.</p>
+            </article>
+
+            <!-- Desktop App -->
+            <article class="project-card reveal active">
+                <h3>Spotify Glass Widget</h3>
+                <p>An open-source desktop widget built for Windows 11 using Electron, providing a sleek, transparent
+                    interface for music playback.</p>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./three.js"></script>
+</body>
+
+</html>
