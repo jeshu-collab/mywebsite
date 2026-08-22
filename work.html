@@ -5,56 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work | Jaswanth</title>
+
+    <!-- Global styles -->
     <link rel="stylesheet" href="./style.css">
+    <!-- Pulling in the dark text and left-aligned layout -->
+    <link rel="stylesheet" href="./contact.css">
 </head>
 
 <body>
 
-    <!-- You can keep the subtle 3D particles on your sub-pages too! -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- A clean, static top navigation for your sub-pages -->
-    <header
-        style="padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto;">
-        <a href="index.html" style="text-decoration: none; font-weight: bold; color: #554d44;">jaswanth.dev</a>
-        <nav class="inline-nav">
-            <a href="about.html">about</a>
-            <a href="work.html" style="color: #000;">work</a>
-            <a href="contact.html">contact</a>
+    <!-- Consistent Top Navigation -->
+    <header class="sub-header">
+        <div class="breadcrumb">
+            <a href="index.html">jaswanth.dev</a>/work
+        </div>
+        <nav class="sub-nav">
+            <a href="about.html">/about</a> -
+            <a href="work.html">/work</a> -
+            <a href="contact.html">/contact</a>
         </nav>
     </header>
 
-    <main style="max-width: 800px; margin: 4rem auto; padding: 0 2rem;">
-        <h1 style="margin-bottom: 2rem; border-bottom: 2px solid #443c33; display: inline-block;">work.</h1>
+    <!-- Main Content -->
+    <!-- Main Content -->
+    <main class="text-page-content">
+        <p>here are some things i've built.</p>
 
-        <div class="project-grid">
+        <div class="text-section">
+            <div class="project-grid">
 
-            <!-- Hardware Project -->
-            <article class="project-card reveal active">
-                <h3>Fishpad</h3>
-                <p>A custom 9-key macropad featuring an OLED display and rotary encoder. Designed the KiCad PCB and STEP
-                    enclosure files from scratch, running on KMK firmware.</p>
-            </article>
+                <article class="project-card">
+                    <h3>Fishpad</h3>
+                    <p>A custom 9-key macropad featuring an OLED display and rotary encoder. Designed the KiCad PCB and
+                        STEP enclosure files from scratch, running on KMK firmware.</p>
+                    <!-- The fade-in link -->
+                    <a href="https://github.com/jeshu-collab/fishpad" target="_blank" class="github-btn">view on github
+                        ↗</a>
+                </article>
 
-            <!-- Software / AI -->
-            <article class="project-card reveal active">
-                <h3>AI Quiz Generator</h3>
-                <p>A Node.js server integrating the Gemini API to parse academic PDF notes and automatically generate
-                    interactive study quizzes.</p>
-            </article>
+                <article class="project-card">
+                    <h3>AI Quiz Generator</h3>
+                    <p>A Node.js server integrating the Gemini API to parse academic PDF notes and automatically
+                        generate interactive study quizzes.</p>
+                    <a href="https://github.com/jeshu-collab" target="_blank" class="github-btn">view on github ↗</a>
+                </article>
 
-            <!-- Desktop App -->
-            <article class="project-card reveal active">
-                <h3>Spotify Glass Widget</h3>
-                <p>An open-source desktop widget built for Windows 11 using Electron, providing a sleek, transparent
-                    interface for music playback.</p>
-            </article>
+                <article class="project-card">
+                    <h3>Spotify Glass Widget</h3>
+                    <p>An open-source desktop widget built for Windows 11 using Electron, providing a sleek, transparent
+                        interface for music playback.</p>
+                    <a href="https://github.com/jeshu-collab" target="_blank" class="github-btn">view on github ↗</a>
+                </article>
 
+                <article class="project-card">
+                    <h3>Gesture Particle Playground</h3>
+                    <p>An interactive web application combining a Three.js 3D particle system with real-time hand
+                        gesture tracking via MediaPipe.</p>
+                    <a href="https://github.com/jeshu-collab" target="_blank" class="github-btn">view on github ↗</a>
+                </article>
+
+            </div>
         </div>
     </main>
 
+    <div class="bottom-footer" style="position: fixed; bottom: 30px; text-align: center; width: 100%; left: 0;">
+        © 2026 jaswanth, open sourced ♥
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="./three.js"></script>
+    <script src="./dots.js"></script>
 </body>
 
 </html>

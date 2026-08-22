@@ -1,26 +1,46 @@
+/* =========================================
+   TEXT PAGE STYLES (contact.css)
+   ========================================= */
+
+/* 1. Make all text darker and sharper */
+body {
+    color: #1a1713;
+    /* A very dark, almost-black warm tone */
+}
+
+/* 2. Top Navigation Bar Layout */
 .sub-header {
     display: flex;
     justify-content: space-between;
+    /* Pushes breadcrumb left, nav right */
     padding: 40px 50px;
     font-size: 1.1rem;
+    color: #1a1713;
 }
 
-.sub-header a {
-    color: #443c33;
+/* 3. Link Underlines (Matches the image exactly) */
+.sub-header a,
+.text-section a {
+    color: #1a1713;
     text-decoration: underline;
-    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+    /* Keeps the line crisp */
+    text-underline-offset: 4px;
+    /* Drops the line slightly below the text */
 }
 
-.sub-header a:hover {
+.sub-header a:hover,
+.text-section a:hover {
     color: #000;
 }
 
+/* 4. Main Body Text Alignment */
 .text-page-content {
-    max-width: 800px;
+    max-width: 1050px;
+    /* Increased from 800px to give 3 columns room to breathe */
     margin: 80px auto 120px 100px;
-    /* Aligns content slightly left of center */
     padding: 0 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 2;
 }
 
@@ -28,12 +48,85 @@
     margin-top: 40px;
 }
 
-.text-section a {
-    color: #443c33;
-
-    text-underline-offset: 5px;
+/* 5. Override the footer color to match */
+.bottom-footer {
+    color: #1a1713 !important;
 }
 
-.text-section a:hover {
+/* =========================================
+   PROJECT STRICT GRID & HOVER (work.html)
+   ========================================= */
+.project-grid {
+    display: grid;
+    /* Bumped back up to 280px. This forces exactly 3 columns maximum! */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    /* Slightly wider gap to make it look elegant */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background-color: transparent;
+    border: 1px solid #dcd3c6;
+    border-radius: 4px;
+    padding: 1.5rem;
+
+    /* Flexbox inside the card handles the text spacing */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+
+    /* CRITICAL FIX: Forces all titles to take up 2 lines of space */
+    /* This ensures all paragraphs start at the exact same horizontal line! */
+    min-height: 3.2rem;
+}
+
+.project-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+
+    /* Pushes the button to the absolute bottom */
+    flex-grow: 1;
+}
+
+/* --- THE HOVER EFFECTS --- */
+.project-card:hover {
+    transform: translateY(-5px);
+    background-color: #f2ebe1;
+}
+
+/* =========================================
+   FADE-IN GITHUB BUTTON
+   ========================================= */
+.github-btn {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px dashed #dcd3c6;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-decoration: none !important;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .github-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.github-btn:hover {
     color: #000;
 }

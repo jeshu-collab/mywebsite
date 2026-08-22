@@ -11,14 +11,52 @@ html {
     scroll-behavior: smooth;
 }
 
+/* =========================================
+   GLOBAL BACKGROUND & INTERACTIVE DOT GRID
+   ========================================= */
 body {
-    font-family: 'IBM Plex Mono', monospace;
-    color: #443c33;
-    background-color: #fdfaf3;
-    background-image: radial-gradient(#e0d8cd 1px, transparent 1px);
-    /* Subtle dot grid */
-    background-size: 40px 40px;
-    overflow-x: hidden;
+    background-color: #fdfbf7;
+    /* Warm cream background */
+    color: #1a1713;
+    font-family: "IBM Plex Mono", bold, monospace;
+
+
+    /* 1. The base, ultra-faint dot grid */
+    background-image: radial-gradient(#e5dac7 1.2px, transparent 1.2px);
+    background-size: 35px 35px;
+    background-position: 0 0;
+}
+
+/* 2. The darker, interactive hover layer */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    /* Crucial: lets you click links through the grid */
+    z-index: -1;
+    /* Keeps the dots behind your text and projects */
+
+    /* The darker dots */
+    background-image: radial-gradient(#857865 1.5px, transparent 1.5px);
+    background-size: 35px 35px;
+    background-position: 0 0;
+
+    /* The mask that creates the "spotlight" following the mouse */
+    -webkit-mask: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+    mask: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+
+    /* Start hidden until the user moves their mouse */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body:hover::before {
+    opacity: 1;
+    /* Fade in smoothly when mouse enters the page */
 }
 
 #bg-canvas {
