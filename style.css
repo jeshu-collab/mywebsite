@@ -1,10 +1,17 @@
 /* =========================================
+   0. FONTS (IBM Plex Mono)
+   ========================================= */
+/* !!! PASTE ALL OF YOUR @font-face RULES HERE !!! */
+
+
+/* =========================================
    1. GLOBAL & BACKGROUND
    ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 html {
@@ -15,14 +22,12 @@ html {
    GLOBAL BACKGROUND & INTERACTIVE DOT GRID
    ========================================= */
 body {
-    background-color: #fdfbf7;
-    /* Warm cream background */
+    background-color: #f4ead5;
+    /* Richer, noticeably warmer aged paper */
     color: #1a1713;
-    font-family: "IBM Plex Mono", bold, monospace;
 
-
-    /* 1. The base, ultra-faint dot grid */
-    background-image: radial-gradient(#e5dac7 1.2px, transparent 1.2px);
+    /* 1. The base, ultra-faint dot grid (shifted to a warm sand) */
+    background-image: radial-gradient(#d6c8b3 1.2px, transparent 1.2px);
     background-size: 35px 35px;
     background-position: 0 0;
 }
@@ -36,16 +41,14 @@ body::before {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    /* Crucial: lets you click links through the grid */
     z-index: -1;
-    /* Keeps the dots behind your text and projects */
 
-    /* The darker dots */
-    background-image: radial-gradient(#857865 1.5px, transparent 1.5px);
+    /* The darker dots (shifted to a warm roasted espresso) */
+    background-image: radial-gradient(#706554 1.5px, transparent 1.5px);
     background-size: 35px 35px;
     background-position: 0 0;
 
-    /* The mask that creates the "spotlight" following the mouse */
+    /* The mask that creates the "spotlight" */
     -webkit-mask: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
     mask: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
 
@@ -56,17 +59,6 @@ body::before {
 
 body:hover::before {
     opacity: 1;
-    /* Fade in smoothly when mouse enters the page */
-}
-
-#bg-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
 }
 
 /* =========================================
@@ -74,7 +66,6 @@ body:hover::before {
    ========================================= */
 #scroll-track {
     height: 350vh;
-    /* Determines how long the animation scroll lasts */
     position: relative;
 }
 
@@ -83,9 +74,9 @@ body:hover::before {
     top: 0;
     height: 100vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* CSS Grid completely forces perfect vertical/horizontal centering */
+    display: grid;
+    place-items: center;
     overflow: hidden;
 }
 
@@ -100,12 +91,14 @@ body:hover::before {
    3. BASE TEXT STYLES & TRANSITIONS
    ========================================= */
 .line {
-    /* Smooth transition for fading and shifting layout */
     transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
     opacity: 0;
     max-height: 0;
-    margin-top: 0;
+
+    /* CRITICAL: Strips all phantom spacing from hidden lines */
+    margin: 0;
+    padding: 0;
 }
 
 .l1,
@@ -162,6 +155,8 @@ body:hover::before {
     bottom: 30px;
     right: 30px;
     text-decoration: underline;
+    /* This makes the fade smooth when scrolling up and down */
+    transition: opacity 0.5s ease;
 }
 
 .bottom-scroll {
@@ -293,26 +288,7 @@ body:hover::before {
     pointer-events: none;
 }
 
-/* Position the button at the bottom right */
-.bottom-skip {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    font-size: 1rem;
-    color: #554d44;
-    text-decoration: underline;
-
-    /* This makes the fade smooth when scrolling up and down */
-    transition: opacity 0.5s ease;
-}
-
-.bottom-skip:hover {
-    color: #000;
-}
-
-/* --- THE VISIBILITY LOGIC --- */
-
-/* Visible in States 0, 1, and 2 */
+/* --- THE VISIBILITY LOGIC FOR BOTTOM SKIP --- */
 .state-0 .bottom-skip,
 .state-1 .bottom-skip,
 .state-2 .bottom-skip {
@@ -321,11 +297,10 @@ body:hover::before {
     /* Clickable */
 }
 
-/* Faded out in State 3 (The details/nav page) */
 .state-3 .bottom-skip {
     opacity: 0;
     pointer-events: none;
-    /* Prevents clicking while it's invisible */
+    /* Prevents clicking while invisible */
 }
 
 /* =========================================

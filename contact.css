@@ -5,6 +5,7 @@
 /* 1. Make all text darker and sharper */
 body {
     color: #1a1713;
+    font-family: "IBM Plex Mono", monospace;
     /* A very dark, almost-black warm tone */
 }
 
@@ -22,7 +23,7 @@ body {
 .sub-header a,
 .text-section a {
     color: #1a1713;
-    text-decoration: underline;
+
     text-decoration-thickness: 1px;
     /* Keeps the line crisp */
     text-underline-offset: 4px;
