@@ -1,0 +1,39 @@
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 50px;
+    font-size: 1.1rem;
+}
+
+.sub-header a {
+    color: #443c33;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.sub-header a:hover {
+    color: #000;
+}
+
+.text-page-content {
+    max-width: 800px;
+    margin: 80px auto 120px 100px;
+    /* Aligns content slightly left of center */
+    padding: 0 50px;
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+.text-section {
+    margin-top: 40px;
+}
+
+.text-section a {
+    color: #443c33;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.text-section a:hover {
+    color: #000;
+}
