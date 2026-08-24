@@ -330,3 +330,9 @@ body:hover::before {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
+
+/* Soften the bold text in your paragraphs */
+.text-section strong {
+    font-weight: 500;
+    /* Change to 600 if this is slightly too thin */
+}
