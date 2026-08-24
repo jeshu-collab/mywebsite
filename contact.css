@@ -131,3 +131,19 @@ body {
 .github-btn:hover {
     color: #000;
 }
+
+/* =========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================= */
+.fade-on-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    /* Starts slightly pushed down */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* Slides up into its natural position */
+}
