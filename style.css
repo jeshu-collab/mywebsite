@@ -272,3 +272,68 @@ body:hover::before {
 .text-section strong {
     font-weight: 500;
 }
+
+a {
+    transition: color 0.2s ease;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--grid-focus);
+    outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+    .sub-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        padding: 25px;
+    }
+
+    .text-page-content {
+        margin: 50px auto 90px;
+        padding: 0 25px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-logo {
+        top: 20px;
+        left: 20px;
+    }
+
+    .bottom-skip {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .l1,
+    .l2 {
+        font-size: 1.6rem;
+    }
+
+    .l3 {
+        max-width: 90vw;
+        font-size: 1.15rem;
+    }
+
+    .l4 {
+        font-size: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

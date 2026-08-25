@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             window.scrollTo({
                 top: window.innerHeight * 2,
-                behavior: 'smooth'
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
             });
         });
     }

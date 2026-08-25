@@ -16,7 +16,7 @@ This made the site much lighter and easier to manage.
 
 - **clean landing page:** used CSS Grid to keep the main text properly centred across different screen sizes.
 
-- **local typography:** added `ibm plex mono` locally using `@font-face`, so there are no external font requests.
+- **typography:** uses `ibm plex mono` from Google Fonts.
 
 - **scroll animations:** used `IntersectionObserver` to smoothly reveal sections and project cards when they come into view.
 
@@ -32,7 +32,7 @@ This made the site much lighter and easier to manage.
 
 The project is completely self-contained.
 
-No build tools, package managers, or dependencies are needed.
+No build tools, package managers, or local dependencies are needed. The pages load their font from Google Fonts.
 
 1. Clone the repository.
 
