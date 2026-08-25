@@ -1,5 +1,5 @@
 body {
-    color: #1a1713;
+    color: var(--ink, #1a1713);
     font-family: "IBM Plex Mono", monospace;
 }
 
@@ -7,20 +7,20 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 40px 50px;
+    color: var(--ink, #1a1713);
     font-size: 1.1rem;
-    color: #1a1713;
 }
 
 .sub-header a,
 .text-section a {
-    color: #1a1713;
-
+    color: var(--ink, #1a1713);
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
 }
 
 .sub-header a:hover,
-.text-section a:hover {
+.text-section a:hover,
+.github-btn:hover {
     color: #000;
 }
 
@@ -37,72 +37,60 @@ body {
 }
 
 .bottom-footer {
-    color: #1a1713 !important;
+    color: var(--ink, #1a1713) !important;
 }
 
 .project-grid {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 .project-card {
-    background-color: transparent;
-    border: 1px solid #dcd3c6;
-    border-radius: 4px;
-    padding: 1.5rem;
-
     display: flex;
-    flex-direction: column;
     position: relative;
-
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--line, #dcd3c6);
+    border-radius: 4px;
+    background: transparent;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.project-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+.project-card:hover {
+    background-color: #f2ebe1;
+    transform: translateY(-5px);
+}
 
+.project-card h3 {
     min-height: 3.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
 .project-card p {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
-
-    flex-grow: 1;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    background-color: #f2ebe1;
 }
 
 .github-btn {
+    visibility: hidden;
     margin-top: auto;
     padding-top: 1rem;
-    border-top: 1px dashed #dcd3c6;
+    border-top: 1px dashed var(--line, #dcd3c6);
     font-size: 0.95rem;
     font-weight: bold;
-    text-decoration: none !important;
-
     opacity: 0;
-    visibility: hidden;
+    text-decoration: none !important;
     transform: translateY(10px);
     transition: all 0.3s ease;
 }
 
 .project-card:hover .github-btn {
-    opacity: 1;
     visibility: visible;
+    opacity: 1;
     transform: translateY(0);
-}
-
-.github-btn:hover {
-    color: #000;
 }
 
 .fade-on-scroll {

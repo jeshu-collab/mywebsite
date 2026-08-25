@@ -1,7 +1,16 @@
+:root {
+    --paper: #f4ead5;
+    --ink: #1a1713;
+    --muted-ink: #554d44;
+    --grid: #d6c8b3;
+    --grid-focus: #706554;
+    --line: #dcd3c6;
+}
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "IBM Plex Mono", monospace;
 }
 
@@ -10,33 +19,36 @@ html {
 }
 
 body {
-    background-color: #f4ead5;
-    color: #1a1713;
-
-    background-image: radial-gradient(#d6c8b3 1.2px, transparent 1.2px);
-    background-size: 35px 35px;
+    background-color: var(--paper);
+    background-image: radial-gradient(var(--grid) 1.2px, transparent 1.2px);
     background-position: 0 0;
+    background-size: 35px 35px;
+    color: var(--ink);
 }
 
 body::before {
-    content: "";
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: -1;
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-
-    background-image: radial-gradient(#706554 1.5px, transparent 1.5px);
-    background-size: 35px 35px;
+    background-image: radial-gradient(var(--grid-focus) 1.5px, transparent 1.5px);
     background-position: 0 0;
-
-    -webkit-mask: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
-    mask: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
-
+    background-size: 35px 35px;
+    content: "";
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.5s ease;
+    -webkit-mask: radial-gradient(
+        circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        black 0%,
+        transparent 100%
+    );
+    mask: radial-gradient(
+        circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        black 0%,
+        transparent 100%
+    );
 }
 
 body:hover::before {
@@ -44,17 +56,17 @@ body:hover::before {
 }
 
 #scroll-track {
-    height: 350vh;
     position: relative;
+    height: 350vh;
 }
 
 #sticky-container {
+    display: grid;
     position: sticky;
     top: 0;
-    height: 100vh;
-    width: 100%;
-    display: grid;
     place-items: center;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -66,13 +78,12 @@ body:hover::before {
 }
 
 .line {
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    max-height: 0;
+    margin: 0;
     overflow: hidden;
     opacity: 0;
-    max-height: 0;
-
-    margin: 0;
     padding: 0;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .l1,
@@ -95,14 +106,16 @@ body:hover::before {
 }
 
 .inline-nav a {
+    margin: 0 15px;
     color: #443c33;
+    font-weight: bold;
     text-decoration: underline;
     text-underline-offset: 6px;
-    margin: 0 15px;
-    font-weight: bold;
 }
 
-.inline-nav a:hover {
+.inline-nav a:hover,
+.top-logo:hover,
+.bottom-skip:hover {
     color: #000;
 }
 
@@ -111,8 +124,8 @@ body:hover::before {
 .bottom-scroll,
 .bottom-footer {
     position: absolute;
+    color: var(--muted-ink);
     font-size: 1rem;
-    color: #554d44;
     text-decoration: none;
     transition: opacity 0.5s ease;
 }
@@ -123,98 +136,54 @@ body:hover::before {
 }
 
 .bottom-skip {
-    bottom: 30px;
     right: 30px;
+    bottom: 30px;
     text-decoration: underline;
-    transition: opacity 0.5s ease;
 }
 
 .bottom-scroll {
     bottom: 40px;
-    text-align: center;
-    line-height: 1.4;
     left: 50%;
+    line-height: 1.4;
+    text-align: center;
     transform: translateX(-50%);
 }
 
 .bottom-footer {
     bottom: 30px;
-    text-align: center;
-    width: 100%;
     left: 0;
+    width: 100%;
+    text-align: center;
 }
 
-.top-logo:hover,
-.bottom-skip:hover {
-    color: #000;
-}
-
-.state-0 .l1 {
-    opacity: 1;
-    max-height: 60px;
-    margin-bottom: 10px;
-}
-
-.state-0 .top-logo,
-.state-0 .bottom-footer {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.state-0 .bottom-scroll,
-.state-0 .bottom-skip {
-    opacity: 1;
-}
-
+.state-0 .l1,
 .state-1 .l1 {
-    opacity: 1;
     max-height: 60px;
     margin-bottom: 10px;
+    opacity: 1;
 }
 
 .state-1 .l2 {
-    opacity: 1;
     max-height: 60px;
-}
-
-.state-1 .top-logo,
-.state-1 .bottom-footer {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.state-1 .bottom-scroll,
-.state-1 .bottom-skip {
     opacity: 1;
 }
 
 .state-2 .l1 {
-    opacity: 0;
     max-height: 0;
     margin-bottom: -20px;
+    opacity: 0;
     transform: translateY(-20px);
 }
 
 .state-2 .l2 {
-    opacity: 1;
     max-height: 60px;
     margin-bottom: 25px;
+    opacity: 1;
 }
 
 .state-2 .l3 {
-    opacity: 1;
     max-height: 100px;
     margin-bottom: 25px;
-}
-
-.state-2 .top-logo,
-.state-2 .bottom-footer {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.state-2 .bottom-scroll,
-.state-2 .bottom-skip {
     opacity: 1;
 }
 
@@ -223,20 +192,39 @@ body:hover::before {
 }
 
 .state-3 .l2 {
-    opacity: 1;
     max-height: 60px;
     margin-bottom: 25px;
+    opacity: 1;
 }
 
 .state-3 .l3 {
-    opacity: 1;
     max-height: 100px;
     margin-bottom: 35px;
+    opacity: 1;
 }
 
 .state-3 .l4 {
-    opacity: 1;
     max-height: 50px;
+    opacity: 1;
+}
+
+.state-0 .top-logo,
+.state-0 .bottom-footer,
+.state-1 .top-logo,
+.state-1 .bottom-footer,
+.state-2 .top-logo,
+.state-2 .bottom-footer {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.state-0 .bottom-scroll,
+.state-0 .bottom-skip,
+.state-1 .bottom-scroll,
+.state-1 .bottom-skip,
+.state-2 .bottom-scroll,
+.state-2 .bottom-skip {
+    opacity: 1;
 }
 
 .state-3 .top-logo,
@@ -253,13 +241,7 @@ body:hover::before {
 .state-0 .bottom-skip,
 .state-1 .bottom-skip,
 .state-2 .bottom-skip {
-    opacity: 1;
     pointer-events: auto;
-}
-
-.state-3 .bottom-skip {
-    opacity: 0;
-    pointer-events: none;
 }
 
 .project-grid {
@@ -270,21 +252,21 @@ body:hover::before {
 }
 
 .project-card {
-    background-color: transparent;
-    border: 1px solid #dcd3c6;
-    border-radius: 4px;
     padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: transparent;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-3px);
     background-color: #f6efe6;
+    transform: translateY(-3px);
 }
 
 .project-card h3 {
-    font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
 .text-section strong {
